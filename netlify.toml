@@ -4,8 +4,10 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  NODE_ENV = "production"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = true
