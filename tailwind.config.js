@@ -21,7 +21,7 @@ module.exports = {
           },
         },
         fontFamily: {
-          sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          sans: ["var(--font-inter)"],
         },
         maxWidth: {
           'mobile': '414px',
