@@ -5,8 +5,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/fitlog' : '',
-  basePath: process.env.NODE_ENV === 'production' ? '/fitlog' : '',
+  //assetPrefix: process.env.NODE_ENV === 'production' ? '/fitlog' : '',
+  //basePath: process.env.NODE_ENV === 'production' ? '/fitlog' : '',
 }
 
 module.exports = nextConfig
