@@ -1,19 +1,10 @@
-import { Meal, MealTypeInfo } from '@/types';
+import type { Meal } from '@/types/supabase';
 
 interface MealListProps {
   meals: Meal[];
-  mealTypeInfo: MealTypeInfo[];
 }
 
-export default function MealList({ meals, mealTypeInfo }: MealListProps) {
-  const getMealIcon = (type: string) => {
-    return mealTypeInfo.find(info => info.type === type)?.icon || '🍽️';
-  };
-
-  const getMealLabel = (type: string) => {
-    return mealTypeInfo.find(info => info.type === type)?.label || type;
-  };
-
+export default function MealList({ meals }: MealListProps) {
   return (
     <div className="card">
       <div className="text-lg font-bold text-gray-800 mb-4">
@@ -32,14 +23,14 @@ export default function MealList({ meals, mealTypeInfo }: MealListProps) {
             >
               <div className="flex-1">
                 <div className="font-bold mb-1">
-                  {getMealIcon(meal.type)} {getMealLabel(meal.type)}
+                  {meal.name}
                 </div>
                 <div className="text-sm text-gray-600">
-                  {meal.food.name}
+                  {meal.eaten_at && new Date(meal.eaten_at).toLocaleString()}
                 </div>
               </div>
               <div className="font-bold text-primary-500">
-                {meal.food.calories} kcal
+                {meal.calories} kcal
               </div>
             </div>
           ))
