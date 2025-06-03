@@ -44,7 +44,7 @@ export default function CalorieOverview({ meals, nutrition, goals }: CalorieOver
         </div>
       </div>
 
-      <MealList meals={meals} mealTypeInfo={mealTypeInfo} />
+      <MealList meals={meals} />
     </>
   );
 }
