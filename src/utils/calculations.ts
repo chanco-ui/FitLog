@@ -1,14 +1,15 @@
-import { Meal, DailyNutrition, PFCRatio } from '@/types';
+import type { Meal } from '@/types/supabase';
+import type { DailyNutrition, PFCRatio } from '@/types';
 
 export const calculateDailyNutrition = (meals: Meal[]): DailyNutrition => {
   return meals.reduce(
     (total, meal) => ({
-      calories: total.calories + meal.food.calories,
-      protein: total.protein + meal.food.protein,
-      fat: total.fat + meal.food.fat,
-      carbohydrates: total.carbohydrates + meal.food.carbohydrates,
+      calories: total.calories + meal.calories,
+      protein: total.protein + (meal.protein ?? 0),
+      fat: total.fat + (meal.fat ?? 0),
+      carbs: total.carbs + (meal.carbs ?? 0),
     }),
-    { calories: 0, protein: 0, fat: 0, carbohydrates: 0 }
+    { calories: 0, protein: 0, fat: 0, carbs: 0 }
   );
 };
 
@@ -22,7 +23,7 @@ export const calculatePFCRatio = (nutrition: DailyNutrition): PFCRatio => {
   // カロリー換算: タンパク質4kcal/g, 脂質9kcal/g, 炭水化物4kcal/g
   const proteinCalories = nutrition.protein * 4;
   const fatCalories = nutrition.fat * 9;
-  const carbCalories = nutrition.carbohydrates * 4;
+  const carbCalories = nutrition.carbs * 4;
 
   return {
     protein: Math.round((proteinCalories / totalCalories) * 100),
