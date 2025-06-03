@@ -16,12 +16,23 @@ export interface Food {
   
   export type MealType = 'breakfast' | 'lunch' | 'snack' | 'dinner';
   
-  export interface DailyNutrition {
+  export type ActiveTab = 'overview' | 'nutrition' | 'trend' | 'record';
+  
+  export type DailyNutrition = {
     calories: number;
     protein: number;
     fat: number;
-    carbohydrates: number;
-  }
+    carbs: number;
+  };
+  
+  export type MealData = {
+    name: string;
+    calories: number;
+    protein?: number;
+    fat?: number;
+    carbs?: number;
+    eaten_at: string;
+  };
   
   export interface NutritionGoals {
     calories: number;
@@ -35,8 +46,6 @@ export interface Food {
     fat: number;
     carbohydrates: number;
   }
-  
-  export type ActiveTab = 'overview' | 'nutrition' | 'trend' | 'record';
   
   export interface MealTypeInfo {
     type: MealType;

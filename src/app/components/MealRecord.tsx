@@ -1,86 +1,106 @@
 'use client';
 
 import { useState } from 'react';
-import { MealType, Food } from '@/types';
-import { foods, getMealTypeInfo } from '@/data/foods';
+import { MealData } from '@/types';
 
 interface MealRecordProps {
-  onAddMeal: (type: MealType, food: Food) => void;
+  onAddMeal: (meal: MealData) => void;
 }
 
 export default function MealRecord({ onAddMeal }: MealRecordProps) {
-  const [selectedMealType, setSelectedMealType] = useState<MealType>('breakfast');
-  const [selectedFoodId, setSelectedFoodId] = useState<string>('');
-  
-  const mealTypeInfo = getMealTypeInfo();
-  const selectedFood = foods.find(food => food.id === selectedFoodId);
+  const [name, setName] = useState('');
+  const [calories, setCalories] = useState('');
+  const [protein, setProtein] = useState('');
+  const [fat, setFat] = useState('');
+  const [carbs, setCarbs] = useState('');
 
-  const handleAddMeal = () => {
-    if (!selectedFood) {
-      alert('食品を選択してください');
-      return;
-    }
-
-    onAddMeal(selectedMealType, selectedFood);
-    setSelectedFoodId('');
-    alert('食事記録を追加しました！');
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onAddMeal({
+      name,
+      calories: Number(calories),
+      protein: protein ? Number(protein) : undefined,
+      fat: fat ? Number(fat) : undefined,
+      carbs: carbs ? Number(carbs) : undefined,
+      eaten_at: new Date().toISOString(),
+    });
+    setName('');
+    setCalories('');
+    setProtein('');
+    setFat('');
+    setCarbs('');
   };
 
   return (
-    <div className="card">
-      <h3 className="text-lg font-bold text-gray-800 mb-5">食事記録</h3>
-      
-      <div className="mb-5">
-        <label className="block mb-2 font-semibold text-gray-800">
-          食事タイプ
-        </label>
-        <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
-          {mealTypeInfo.map(({ type, icon, label }) => (
-            <button
-              key={type}
-              className={`meal-type-btn ${selectedMealType === type ? 'active' : ''}`}
-              onClick={() => setSelectedMealType(type)}
-            >
-              {icon} {label}
-            </button>
-          ))}
+    <div>
+      <h2 className="text-xl font-bold mb-4">食事記録</h2>
+      <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow p-4">
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            食事名
+          </label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            required
+          />
         </div>
-      </div>
-
-      <div className="mb-5">
-        <label className="block mb-2 font-semibold text-gray-800">
-          食品
-        </label>
-        <select
-          className="form-input"
-          value={selectedFoodId}
-          onChange={(e) => setSelectedFoodId(e.target.value)}
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            カロリー
+          </label>
+          <input
+            type="number"
+            value={calories}
+            onChange={(e) => setCalories(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            required
+          />
+        </div>
+        <div className="grid grid-cols-3 gap-4 mb-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              タンパク質
+            </label>
+            <input
+              type="number"
+              value={protein}
+              onChange={(e) => setProtein(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              脂質
+            </label>
+            <input
+              type="number"
+              value={fat}
+              onChange={(e) => setFat(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              炭水化物
+            </label>
+            <input
+              type="number"
+              value={carbs}
+              onChange={(e) => setCarbs(e.target.value)}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md"
+            />
+          </div>
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
         >
-          <option value="">食品を選択してください</option>
-          {foods.map((food) => (
-            <option key={food.id} value={food.id}>
-              {food.name}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className="mb-5">
-        <label className="block mb-2 font-semibold text-gray-800">
-          カロリー
-        </label>
-        <input
-          type="number"
-          className="form-input"
-          value={selectedFood?.calories || ''}
-          placeholder="自動計算されます"
-          readOnly
-        />
-      </div>
-
-      <button className="btn-primary" onClick={handleAddMeal}>
-        記録追加
-      </button>
+          記録する
+        </button>
+      </form>
     </div>
   );
 }

@@ -1,4 +1,5 @@
-import { Meal, DailyNutrition, NutritionGoals } from '@/types';
+import { DailyNutrition } from '@/types';
+import type { Meal, NutritionGoal } from '@/types/supabase';
 import { calculateCalorieProgress, getRemainingCalories } from '@/utils/calculations';
 import { getMealTypeInfo } from '@/data/foods';
 import MealList from './MealList';
@@ -6,12 +7,12 @@ import MealList from './MealList';
 interface CalorieOverviewProps {
   meals: Meal[];
   nutrition: DailyNutrition;
-  goals: NutritionGoals;
+  goals: NutritionGoal | null;
 }
 
 export default function CalorieOverview({ meals, nutrition, goals }: CalorieOverviewProps) {
-  const progress = calculateCalorieProgress(nutrition.calories, goals.calories);
-  const remaining = getRemainingCalories(nutrition.calories, goals.calories);
+  const progress = calculateCalorieProgress(nutrition.calories, goals?.daily_calories || 0);
+  const remaining = getRemainingCalories(nutrition.calories, goals?.daily_calories || 0);
   const mealTypeInfo = getMealTypeInfo();
 
   return (
@@ -25,9 +26,11 @@ export default function CalorieOverview({ meals, nutrition, goals }: CalorieOver
             <span className="text-3xl font-bold text-primary-500">
               {nutrition.calories.toLocaleString()}
             </span>
-            <span className="text-base text-gray-600">
-              / {goals.calories.toLocaleString()} kcal
-            </span>
+            {goals && (
+              <span className="text-base text-gray-600">
+                / {goals.daily_calories.toLocaleString()} kcal
+              </span>
+            )}
           </div>
           <div className="bg-gray-200 rounded-full overflow-hidden h-3 mb-2">
             <div 
