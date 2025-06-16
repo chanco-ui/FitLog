@@ -2,13 +2,19 @@ import { useState, useMemo } from 'react';
 import { Meal, MealType, Food, DailyNutrition, NutritionGoals } from '@/types';
 import { calculateDailyNutrition, isToday } from '@/utils/calculations';
 
+//栄養目標の初期値
 const defaultGoals: NutritionGoals = {
+    //カロリー
   calories: 2000,
+    //タンパク質
   protein: 125,
+    //脂質
   fat: 67,
+    //炭水化物
   carbohydrates: 250,
 };
 
+//サンプルデータ
 export const useMeals = () => {
   const [meals, setMeals] = useState<Meal[]>([
     {
@@ -65,6 +71,7 @@ export const useMeals = () => {
     },
   ]);
 
+//  目標値の編集機能を追加する場合はここ（setGoalsを追加）
   const [goals] = useState<NutritionGoals>(defaultGoals);
 
   const todayMeals = useMemo(() => {

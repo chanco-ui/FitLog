@@ -40,20 +40,28 @@ export default function Home() {
   //  initializeLiff();
   //}, []);
 
+  //現在の状態によって表示するコンポーネントを切り替える
   const renderContent = () => {
+    //初期化されていない場合、Loading...と表示
     //if (!isInitialized) {
     //  return <div className="flex justify-center items-center h-screen">Loading...</div>;
     //}
 
+    //アクティブタブによって表示を変える（画面の種類）
     switch (activeTab) {
+        //カロリー画面
       case 'overview':
         return <CalorieOverview meals={meals} nutrition={dailyNutrition} goals={goals} />;
+        //栄養バランス
       case 'nutrition':
         return <NutritionBalance nutrition={dailyNutrition} />;
+        //グラフ
       case 'trend':
         return <CalorieTrend />;
+        //食事の記録画面
       case 'record':
         return <MealRecord onAddMeal={addMeal} />;
+        //どれにも当てはまらない場合、カロリー画面を表示
       default:
         return <CalorieOverview meals={meals} nutrition={dailyNutrition} goals={goals} />;
     }
