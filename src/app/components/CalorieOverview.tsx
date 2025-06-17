@@ -1,3 +1,6 @@
+
+//摂取カロリー、進捗バー、残りカロリーの表示、食事一覧のUI
+
 import { Meal, DailyNutrition, NutritionGoals } from '@/types';
 import { calculateCalorieProgress, getRemainingCalories } from '@/utils/calculations';
 import { getMealTypeInfo } from '@/data/foods';

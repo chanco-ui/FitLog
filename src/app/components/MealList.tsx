@@ -1,3 +1,6 @@
+
+//ユーザーが記録した食事一覧を表示するためのUI
+
 import { Meal, MealTypeInfo } from '@/types';
 
 //型定義

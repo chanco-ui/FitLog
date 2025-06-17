@@ -1,3 +1,6 @@
+
+//週間カロリーと推移と月間PFCバランスのセクション表示UI
+
 export default function CalorieTrend() {
     return (
       <>

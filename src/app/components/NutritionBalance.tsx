@@ -1,3 +1,6 @@
+
+//ユーザの1日の栄養摂取量をPFCバランスとして表示させるUI
+
 import { DailyNutrition } from '@/types';
 import { calculatePFCRatio } from '@/utils/calculations';
 
