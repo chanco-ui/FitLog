@@ -1,26 +1,35 @@
+
+//ユーザーが食事の種類と食品を選んで「食事記録を追加」できるようにする入力フォームのUI
+
 'use client';
 
 import { useState } from 'react';
 import { MealType, Food } from '@/types';
 import { foods, getMealTypeInfo } from '@/data/foods';
 
+
+//親コンポーネントからonAddMeal関数を受け取る
+//食事記録を追加する処理を親に伝えるためのコールバック
 interface MealRecordProps {
   onAddMeal: (type: MealType, food: Food) => void;
 }
 
 export default function MealRecord({ onAddMeal }: MealRecordProps) {
+    //状態管理
   const [selectedMealType, setSelectedMealType] = useState<MealType>('breakfast');
   const [selectedFoodId, setSelectedFoodId] = useState<string>('');
   
+    //データ取得
   const mealTypeInfo = getMealTypeInfo();
   const selectedFood = foods.find(food => food.id === selectedFoodId);
 
+    //食事追加処理
   const handleAddMeal = () => {
     if (!selectedFood) {
       alert('食品を選択してください');
       return;
     }
-
+        //食品が選ばれていればonAddMealを呼び出して親に通知
     onAddMeal(selectedMealType, selectedFood);
     setSelectedFoodId('');
     alert('食事記録を追加しました！');
@@ -35,6 +44,7 @@ export default function MealRecord({ onAddMeal }: MealRecordProps) {
           食事タイプ
         </label>
         <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
+            {/* 食事タイプの選択ボタン */}
           {mealTypeInfo.map(({ type, icon, label }) => (
             <button
               key={type}
@@ -51,6 +61,7 @@ export default function MealRecord({ onAddMeal }: MealRecordProps) {
         <label className="block mb-2 font-semibold text-gray-800">
           食品
         </label>
+          {/* 食品選択のドロップダウン */}
         <select
           className="form-input"
           value={selectedFoodId}
@@ -69,6 +80,7 @@ export default function MealRecord({ onAddMeal }: MealRecordProps) {
         <label className="block mb-2 font-semibold text-gray-800">
           カロリー
         </label>
+          {/* カロリー計算（自動計算） */}
         <input
           type="number"
           className="form-input"

@@ -31,7 +31,7 @@ export default function MealList({ meals, mealTypeInfo }: MealListProps) {
             まだ記録がありません
           </p>
         ) : (
-            //map関数を使用して食事の記録を表示
+            //map関数を使用して食事の記録を表示、icon/名前/カロリー
           meals.map((meal) => (
             <div 
               key={meal.id}
