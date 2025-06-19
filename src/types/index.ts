@@ -5,6 +5,7 @@ export interface Food {
     protein: number;
     fat: number;
     carbohydrates: number;
+    favorite?: boolean;
   }
   
   export interface Meal {
@@ -43,3 +44,5 @@ export interface Food {
     icon: string;
     label: string;
   }
+
+ 

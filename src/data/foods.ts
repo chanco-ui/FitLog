@@ -8,6 +8,7 @@ export const foods: Food[] = [
     protein: 3.6,
     fat: 0.9,
     carbohydrates: 37.1,
+    favorite: false,
   },
   {
     id: 'bread',
@@ -16,6 +17,7 @@ export const foods: Food[] = [
     protein: 9.0,
     fat: 4.4,
     carbohydrates: 48.0,
+    favorite: false,
   },
   {
     id: 'chicken_breast',
@@ -24,6 +26,7 @@ export const foods: Food[] = [
     protein: 22.3,
     fat: 11.6,
     carbohydrates: 0.0,
+    favorite: false,
   },
   {
     id: 'salmon',
@@ -32,6 +35,7 @@ export const foods: Food[] = [
     protein: 22.3,
     fat: 14.6,
     carbohydrates: 0.1,
+    favorite: false,
   },
   {
     id: 'egg',
@@ -40,6 +44,7 @@ export const foods: Food[] = [
     protein: 6.2,
     fat: 5.3,
     carbohydrates: 0.3,
+    favorite: false,
   },
   {
     id: 'apple',
@@ -48,6 +53,7 @@ export const foods: Food[] = [
     protein: 0.3,
     fat: 0.2,
     carbohydrates: 21.5,
+    favorite: false,
   },
   {
     id: 'banana',
@@ -56,6 +62,7 @@ export const foods: Food[] = [
     protein: 1.1,
     fat: 0.2,
     carbohydrates: 22.5,
+    favorite: false,
   },
   {
     id: 'yogurt',
@@ -64,6 +71,7 @@ export const foods: Food[] = [
     protein: 3.6,
     fat: 3.0,
     carbohydrates: 5.2,
+    favorite: false,
   },
   {
     id: 'miso_soup',
@@ -72,6 +80,7 @@ export const foods: Food[] = [
     protein: 2.2,
     fat: 1.0,
     carbohydrates: 4.9,
+    favorite: false,
   },
   {
     id: 'grilled_fish',
@@ -80,6 +89,7 @@ export const foods: Food[] = [
     protein: 18.0,
     fat: 4.8,
     carbohydrates: 0.1,
+    favorite: false,
   },
   {
     id: 'hamburger_set',
@@ -88,6 +98,7 @@ export const foods: Food[] = [
     protein: 25.0,
     fat: 35.0,
     carbohydrates: 65.0,
+    favorite: false,
   },
   {
     id: 'vegetable_stir_fry',
@@ -96,6 +107,7 @@ export const foods: Food[] = [
     protein: 5.0,
     fat: 8.0,
     carbohydrates: 15.0,
+    favorite: false,
   },
 ];
 

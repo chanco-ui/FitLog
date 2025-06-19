@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { ActiveTab } from '@/types';
 import { useMeals } from '@/hooks/useMeals';
+import { useFoods } from '@/hooks/useFoods';
 //import { initLiff, isLoggedIn, login } from './liff';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
@@ -20,6 +21,7 @@ const dummyUser = {
 export default function Home() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('overview');
   const { meals, dailyNutrition, goals, addMeal } = useMeals();
+  const { foods } = useFoods();
   //const [isInitialized, setIsInitialized] = useState(false);
 
   //useEffect(() => {
