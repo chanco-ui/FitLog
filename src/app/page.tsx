@@ -11,6 +11,7 @@ import CalorieOverview from './components/CalorieOverview';
 import NutritionBalance from './components/NutritionBalance';
 import CalorieTrend from './components/CalorieTrend';
 import MealRecord from './components/MealRecord';
+import Calendar from './components/Calendar';
 
 //ダミーデータの用意（LIFFログインの代わり）
 const dummyUser = {
@@ -63,6 +64,9 @@ export default function Home() {
         //食事の記録画面
       case 'record':
         return <MealRecord onAddMeal={addMeal} />;
+        //カレンダー画面
+      case 'calendar':
+        return <Calendar />;
         //どれにも当てはまらない場合、カロリー画面を表示
       default:
         return <CalorieOverview meals={meals} nutrition={dailyNutrition} goals={goals} />;

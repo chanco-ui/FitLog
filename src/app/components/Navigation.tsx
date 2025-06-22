@@ -1,4 +1,3 @@
-
 //ユーザーが「摂取状況」「栄養バランス」「推移」「記録」などのタブをクリックして表示内容を切り替えるためのUI
 
 import { ActiveTab } from '@/types';
@@ -17,6 +16,7 @@ const tabs = [
   { id: 'nutrition' as ActiveTab, label: '栄養バランス' },
   { id: 'trend' as ActiveTab, label: '推移' },
   { id: 'record' as ActiveTab, label: '記録' },
+  { id: 'calendar' as ActiveTab, label: 'カレンダー' },
 ];
 
 export default function Navigation({ activeTab, onTabChange }: NavigationProps) {

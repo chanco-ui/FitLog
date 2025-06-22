@@ -37,7 +37,7 @@ export interface Food {
     carbohydrates: number;
   }
   
-  export type ActiveTab = 'overview' | 'nutrition' | 'trend' | 'record';
+  export type ActiveTab = 'overview' | 'nutrition' | 'trend' | 'record' | 'calendar';
   
   export interface MealTypeInfo {
     type: MealType;
